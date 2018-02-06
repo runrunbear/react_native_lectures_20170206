@@ -1,0 +1,87 @@
+﻿/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  AlertIOS,
+} from 'react-native';
+
+class DongFang extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+      <Text style={styles.item} onPress={this.tip}>提示对话框</Text>
+      <Text style={styles.item} onPress={this.input}>输入对话框</Text>
+      </View>
+    );
+  }
+
+  tip(){
+    AlertIOS.alert('提示','加入vip学习React Native',[
+      {
+        text:'取消',
+        onPress:()=>{
+          alert('你点击了取消按钮');
+        }
+      },
+      {
+        text:'不清楚',
+        onPress:()=>{
+          alert('你点击了不清楚按钮');
+        }
+      },
+
+      {
+        text:'确认',
+        onPress:()=>{
+          alert('你点击了确认按钮');
+        }
+      },
+    ]);
+  }
+
+  input(){
+    AlertIOS.prompt('提示','请输入您vip的用户名',[
+      {
+        text:'取消',
+        onPress:()=>{
+          alert('你点击了取消按钮');
+        }
+      },{
+        text:'确认',
+        onPress:(text)=>{
+          alert(text);
+        }
+      },
+    ]
+
+    );
+
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop:25,
+  },
+  item:{
+    marginTop:10,
+    marginLeft:5,
+    marginRight:5,
+    height:30,
+    borderWidth:1,
+    padding:6,
+    borderColor:'#ddd',
+
+  }
+});
+
+AppRegistry.registerComponent('DongFang', () => DongFang);
